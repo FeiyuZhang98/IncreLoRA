@@ -328,15 +328,15 @@ class TrainingArguments(TrainingArguments):
     )
     top_h: Optional[int] = field(
         default=10,
-        metadata={"help": "The number of modules selected"},
+        metadata={"help": "The number of selected modules per allocation."},
     )
     incre_rank_num: Optional[int] = field(
         default=None,
-        metadata={"help": "Incre rank num for single matrix"},
+        metadata={"help": "Incre ranks for single matrix"},
     )
     advance_learn: Optional[bool] = field(
         default=True,
-        metadata={"help": "Advance learn"},
+        metadata={"help": "Advance learning"},
     )
     multi_lr: Optional[bool] = field(
         default=True,
@@ -827,7 +827,6 @@ def main():
     if model_args.lora_type == "svd" and model_args.apply_increlora:
         rankallocator = RankAllocator(
             model, 
-            weight_decay=training_args.weight_decay,
             lora_r=model_args.lora_r,
             target_rank=model_args.target_rank,
             init_warmup=model_args.init_warmup, 
@@ -837,6 +836,8 @@ def main():
             beta1=model_args.beta1, 
             beta2=model_args.beta2, 
             target_total_rank=model_args.target_total_rank, 
+            weight_decay=training_args.weight_decay,
+            incre_rank_num=training_args.incre_rank_num,
             tb_writter=tb_writter, 
             tb_writter_loginterval=model_args.tb_writter_loginterval,
         )

@@ -345,8 +345,8 @@ def parse_args():
     parser.add_argument("--tb_writter_loginterval", type=int, default=500, help="")
     
     parser.add_argument("--incre_interval", type=int, default=10, help="Increasing interval")
-    parser.add_argument("--top_h", type=int, default=10, help="The number of modules selected")
-    parser.add_argument("--incre_rank_num", type=int, default=None, help="Incre rank num for single matrix")
+    parser.add_argument("--top_h", type=int, default=10, help="The number of selected modules per allocation.")
+    parser.add_argument("--incre_rank_num", type=int, default=None, help="Incre ranks for single matrix")
     
     parser.add_argument("--experiment_name", type=str, default=None, help = "The name of the experiment" )
     parser.add_argument("--lora_dropout", type=float, default=0., help = "LoRA dropout rate.")
@@ -737,7 +737,6 @@ def main():
     if args.lora_type == "svd" and args.apply_increlora:
         rankallocator = RankAllocator(
             model, 
-            weight_decay=args.weight_decay,
             lora_r=args.lora_r,
             target_rank=args.target_rank,
             init_warmup=args.init_warmup,
@@ -746,6 +745,8 @@ def main():
             beta1=args.beta1, 
             beta2=args.beta2, 
             target_total_rank=args.target_total_rank, 
+            weight_decay=args.weight_decay,
+            incre_rank_num=args.incre_rank_num,
             tb_writter=tb_writter, 
             tb_writter_loginterval=args.tb_writter_loginterval,
         )
