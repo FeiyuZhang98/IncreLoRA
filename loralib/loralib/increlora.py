@@ -176,7 +176,6 @@ class RankAllocator(object):
     """
     def __init__(
         self, model, 
-        weight_decay,
         lora_r:int,
         target_rank:int, 
         init_warmup:int, 
@@ -187,6 +186,7 @@ class RankAllocator(object):
         beta2:float, 
         total_step:Optional[int]=None, 
         target_total_rank:Optional[int]=None,
+        weight_decay=None,
         incre_rank_num=None,
         tb_writter=None,
         tb_writter_loginterval:int=500, 

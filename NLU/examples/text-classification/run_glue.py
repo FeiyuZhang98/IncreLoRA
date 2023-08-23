@@ -281,7 +281,7 @@ class TrainingArguments(TrainingArguments):
     )
     top_h: Optional[int] = field(
         default=10,
-        metadata={"help": "The number of modules selected"},
+        metadata={"help": "Number of selected modules per allocation"},
     )
     incre_rank_num: Optional[int] = field(
         default=None,
