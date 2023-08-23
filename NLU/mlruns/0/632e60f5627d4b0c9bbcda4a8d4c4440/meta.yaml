@@ -1,0 +1,15 @@
+artifact_uri: file:///home/zhangfeiyu/models/IncreLoRA/NLU/mlruns/0/632e60f5627d4b0c9bbcda4a8d4c4440/artifacts
+end_time: 1691498698037
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 632e60f5627d4b0c9bbcda4a8d4c4440
+run_name: orderly-gnat-236
+run_uuid: 632e60f5627d4b0c9bbcda4a8d4c4440
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1691454662603
+status: 3
+tags: []
+user_id: zhangfeiyu
